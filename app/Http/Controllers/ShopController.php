@@ -64,7 +64,7 @@ class ShopController extends Controller
             $products = $products->orderBy('id', 'DESC');
         }
         $sort = $request->get('sort');
-        $products = $products->get();
+        $products = $products->paginate(6);
         return view('front.shop', get_defined_vars());
     }
 }
