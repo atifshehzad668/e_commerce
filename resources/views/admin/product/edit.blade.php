@@ -134,6 +134,28 @@
                                             <p class="error"></p>
                                         </div>
                                     </div>
+
+
+
+
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label for="related_products">Related product</label>
+                                            <div class="mb-3">
+                                                <select multiple name="related_products[]" id="related_products"
+                                                    class="form-control related_products w-100">
+                                                    @if (!empty($related_products))
+                                                        @foreach ($related_products as $relproduct)
+                                                            <option value="{{ $relproduct->id }}" selected>
+                                                                {{ $relproduct->name }}</option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <div class="custom-control custom-checkbox">
@@ -152,6 +174,7 @@
                                             <p class="error"></p>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -240,6 +263,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -255,6 +279,20 @@
 
 @section('customjs')
     <script>
+        $('.related_products').select2({
+            ajax: {
+                url: '{{ route('products.getProducts') }}',
+                dataType: 'json',
+                tags: true,
+                multiple: true,
+                minimumInputLength: 3,
+                processResults: function(data) {
+                    return {
+                        results: data.tags
+                    };
+                }
+            }
+        });
         // $("#ProductForm").submit(function(event) {
         //     event.preventDefault();
         //     var formArray = $(this).serializeArray();

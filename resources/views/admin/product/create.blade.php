@@ -121,6 +121,18 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="mb-3">
+                                            <h2 class="h4 mb-3">Related product</h2>
+                                            <div class="mb-3">
+                                                <select multiple name="related_products[]" id="related_products"
+                                                    class="form-control related_products w-100">
+
+                                                </select>
+                                                <p class="error"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="hidden" value="No" name="track_qty">
                                                 <input class="custom-control-input" type="checkbox" value="Yes"
@@ -198,6 +210,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -248,6 +261,22 @@
         //         }
         //     });
         // });
+
+        $('.related_products').select2({
+            ajax: {
+                url: '{{ route('products.getProducts') }}',
+                dataType: 'json',
+                tags: true,
+                multiple: true,
+                minimumInputLength: 3,
+                processResults: function(data) {
+                    return {
+                        results: data.tags
+                    };
+                }
+            }
+        });
+
         $("#ProductForm").submit(function(event) {
             event.preventDefault();
             var formData = new FormData(this);

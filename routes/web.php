@@ -64,12 +64,13 @@ Route::prefix('admin')->group(function () {
 
         //brands routes
         Route::resource('brands', BrandController::class);
-        Route::resource('products', ProductController::class);
         Route::post('/product-images/update', [ProductImageController::class, 'update'])->name('product-images.update');
         Route::delete('product-images/delete', [ProductImageController::class, 'delete'])->name('product-images.delete');
 
 
         //product routes
+        Route::resource('products', ProductController::class);
+        Route::get('/get-products', [ProductController::class, 'getProducts'])->name('products.getProducts');
 
 
 

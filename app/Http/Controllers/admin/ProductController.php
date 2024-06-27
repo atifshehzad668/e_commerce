@@ -78,6 +78,7 @@ class ProductController extends Controller
         $product->is_featured = $request->is_featured;
         $product->short_description = $request->short_description;
         $product->shipping_returns = $request->shipping_returns;
+        $product->related_products = $request->related_products ? implode(',', $request->related_products) : '';
         $product->save();
 
 
@@ -113,6 +114,14 @@ class ProductController extends Controller
         $categories = Category::orderBy('name', 'ASC')->get();
 
         $brands = Brand::orderBy('name', 'ASC')->get();
+
+        //Fetch related products
+        $related_products = [];
+        if ($product->related_products != '') {
+            $productArray = explode(',', $product->related_products);
+            $related_products = Product::whereIn('id', $productArray)->get();
+        }
+
         return view('admin.product.edit', get_defined_vars());
     }
 
@@ -163,6 +172,7 @@ class ProductController extends Controller
         $product->is_featured = $request->is_featured;
         $product->short_description = $request->short_description;
         $product->shipping_returns = $request->shipping_returns;
+        $product->related_products = $request->related_products ? implode(',', $request->related_products) : '';
         $product->save();
 
         // Handle image uploads
@@ -178,6 +188,27 @@ class ProductController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Product updated successfully'
+        ]);
+    }
+
+    public function getProducts(Request $request)
+    {
+        $tempProduct = [];
+        $products = collect(); // Initialize $products as an empty collection
+
+        if ($request->term != "") {
+            $products = Product::where('name', 'like', '%' . $request->term . '%')->get();
+        }
+
+        if ($products->isNotEmpty()) {
+            foreach ($products as $product) {
+                $tempProduct[] = array('id' => $product->id, 'text' => $product->name);
+            }
+        }
+
+        return response()->json([
+            'tags' => $tempProduct,
+            'status' => true
         ]);
     }
 }
