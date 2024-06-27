@@ -67,4 +67,15 @@ class ShopController extends Controller
         $products = $products->paginate(6);
         return view('front.shop', get_defined_vars());
     }
+
+
+
+    public function product($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+        if ($product == null) {
+            abort(404);
+        }
+        return view('front.product', get_defined_vars());
+    }
 }

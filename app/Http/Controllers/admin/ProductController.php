@@ -76,6 +76,8 @@ class ProductController extends Controller
         $product->sub_category_id = $request->sub_category ?? null;
         $product->brand_id = $request->brand;
         $product->is_featured = $request->is_featured;
+        $product->short_description = $request->short_description;
+        $product->shipping_returns = $request->shipping_returns;
         $product->save();
 
 
@@ -159,6 +161,8 @@ class ProductController extends Controller
         $product->sub_category_id = $request->sub_category ?? null;
         $product->brand_id = $request->brand;
         $product->is_featured = $request->is_featured;
+        $product->short_description = $request->short_description;
+        $product->shipping_returns = $request->shipping_returns;
         $product->save();
 
         // Handle image uploads

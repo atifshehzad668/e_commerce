@@ -124,7 +124,7 @@
 
                                     <div class="card product-card">
                                         <div class="product-image position-relative">
-                                            <a href="" class="product-img">
+                                            <a href="{{ route('front.product', $product->slug) }}" class="product-img">
                                                 @if ($product->getMedia('images')->isNotEmpty())
                                                     <img style="height: 200px; width: 100%"
                                                         src="{{ $product->getFirstMediaUrl('images') }}"
@@ -157,7 +157,7 @@
                             @endforeach
                         @endif
                         <div class="col-md-12 pt-5">
-                            {{ $products->links() }}
+                            {{ $products->WithQueryString()->links() }}
                         </div>
 
                     </div>

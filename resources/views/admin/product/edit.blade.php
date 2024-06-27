@@ -45,11 +45,26 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="mb-3">
+                                            <label for="description">Short Description</label>
+                                            <textarea name="short_description" value="{{ $product->short_description }}" id="description" cols="30"
+                                                rows="10" class="summernote" placeholder="Short Description"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
                                             <label for="description">Description</label>
                                             <textarea name="description" value="{{ $product->description }}" id="description" cols="30" rows="10"
                                                 class="summernote" placeholder="Description"></textarea>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label for="description">Shipping And Returns</label>
+                                            <textarea name="shipping_returns" value="{{ $product->shipping_returns }}" id="description" cols="30"
+                                                rows="10" class="summernote" placeholder="Shipping And Returns"></textarea>
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label for="image">Product Image</label>
@@ -87,8 +102,9 @@
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label for="compare_price">Compare at Price</label>
-                                            <input type="text" value="{{ $product->compate_price }}" name="compare_price"
-                                                id="compare_price" class="form-control" placeholder="Compare Price">
+                                            <input type="text" value="{{ $product->compate_price }}"
+                                                name="compare_price" id="compare_price" class="form-control"
+                                                placeholder="Compare Price">
                                             <p class="text-muted mt-3">
                                                 To show a reduced price, move the product’s original price into Compare at
                                                 price. Enter a lower value into Price.
@@ -105,8 +121,8 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="sku">SKU (Stock Keeping Unit)</label>
-                                            <input type="text" value="{{ $product->sku }}" name="sku" id="sku"
-                                                class="form-control" placeholder="sku">
+                                            <input type="text" value="{{ $product->sku }}" name="sku"
+                                                id="sku" class="form-control" placeholder="sku">
                                             <p class="error"></p>
                                         </div>
                                     </div>
@@ -228,7 +244,7 @@
                 </div>
 
                 <div class="pb-5 pt-3">
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                     <a href="{{ route('products.index') }}" class="btn btn-outline-dark ml-3">Cancel</a>
                 </div>
             </div>

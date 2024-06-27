@@ -24,6 +24,10 @@ use App\Http\Controllers\ShopController;
 
 Route::get('/', [FrontController::class, 'index'])->name('front.home');
 Route::get('/shop/{categorySlug?}/{subCategorySlug?}', [ShopController::class, 'index'])->name('front.shop');
+// Route definition
+Route::get('/product/{slug}', [ShopController::class, 'product'])->name('front.product');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
