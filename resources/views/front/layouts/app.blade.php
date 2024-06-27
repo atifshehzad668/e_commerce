@@ -45,6 +45,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;500&family=Raleway:ital,wght@0,400;0,600;0,800;1,200&family=Roboto+Condensed:wght@400;700&family=Roboto:wght@300;400;700;900&display=swap"
         rel="stylesheet">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Fav Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="#" />
@@ -198,6 +199,7 @@
     <script src="{{ asset('front-assets/js/slick.min.js') }}"></script>
     <script src="{{ asset('front-assets/js/custom.js') }}"></script>
     <script src="{{ asset('front-assets/js/ion.rangeSlider.min.js') }}"></script>
+
     <script>
         window.onscroll = function() {
             myFunction()
@@ -213,7 +215,13 @@
                 navbar.classList.remove("sticky");
             }
         }
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
     </script>
+
     @yield('customJs')
 </body>
 

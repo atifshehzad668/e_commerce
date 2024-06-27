@@ -3,19 +3,20 @@
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 
-use App\Http\Controllers\admin\BrandController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\HomeController;
-use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\ProductController;
-use App\Http\Controllers\admin\ProductImageController;
-use App\Http\Controllers\admin\ProductSubCategoryController;
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\TempImagesController;
 use App\Http\Controllers\admin\SubCategoryController;
-use App\Http\Controllers\FrontController;
-use App\Http\Controllers\ShopController;
+use App\Http\Controllers\admin\ProductImageController;
+use App\Http\Controllers\admin\ProductSubCategoryController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -26,6 +27,8 @@ Route::get('/', [FrontController::class, 'index'])->name('front.home');
 Route::get('/shop/{categorySlug?}/{subCategorySlug?}', [ShopController::class, 'index'])->name('front.shop');
 // Route definition
 Route::get('/product/{slug}', [ShopController::class, 'product'])->name('front.product');
+Route::get('/cart', [CartController::class, 'Cart'])->name('front.cart');
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('front.addToCart');
 
 
 
