@@ -50,7 +50,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::middleware('admin.auth')->group(function () {
-        Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
         Route::get('/logout', [HomeController::class, 'logout'])->name('admin.logout');
         Route::post('/upload-temp-image', [TempImagesController::class, 'create'])->name('temp-images.create');
 

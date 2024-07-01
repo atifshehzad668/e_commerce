@@ -14,6 +14,7 @@ class AdminController extends Controller
     }
     public function authenticate(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required'
@@ -38,6 +39,4 @@ class AdminController extends Controller
                 ->withErrors($validator)->withInput($request->only('email'));
         }
     }
-
-    
 }

@@ -150,21 +150,5 @@
 
 
 @section('customJs')
-    <script type="text/javascript">
-        function addToCart(id) {
-            $.ajax({
-                url: '{{ route('front.addToCart') }}',
-                type: 'post',
-                data: {
-                    id: id
-                },
-                dataType: 'json',
-                success: function(response) {
-
-                }
-
-
-            });
-        }
-    </script>
+   
 @endsection
