@@ -29,6 +29,10 @@ Route::get('/shop/{categorySlug?}/{subCategorySlug?}', [ShopController::class, '
 Route::get('/product/{slug}', [ShopController::class, 'product'])->name('front.product');
 Route::get('/cart', [CartController::class, 'Cart'])->name('front.cart');
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('front.addToCart');
+Route::post('/update-to-cart', [CartController::class, 'updateCart'])->name('front.updateCart');
+// In routes/web.php or routes/api.php
+Route::post('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+
 
 
 
@@ -50,7 +54,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::middleware('admin.auth')->group(function () {
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
         Route::get('/logout', [HomeController::class, 'logout'])->name('admin.logout');
         Route::post('/upload-temp-image', [TempImagesController::class, 'create'])->name('temp-images.create');
 

@@ -95,4 +95,55 @@ class CartController extends Controller
 
         return view('front.cart', get_defined_vars());
     }
+
+    public function updateCart(Request $request)
+    {
+        $rowId = $request->rowId;
+        $qty = $request->qty;
+        $iteminfo = Cart::get($rowId);
+        $product = Product::find($iteminfo->id);
+        if (!$product) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Product not found'
+            ]);
+        }
+
+        if ($product->track_qty == 'YES') {
+
+
+            if ($product->qty < $qty) {
+                $status = true;
+                $message = 'Requested qty(' . $qty . ') not available in stock';
+            } else {
+
+                $status = false;
+                Cart::update($rowId, $qty);
+                $message = "Cart Updated Successfully";
+                $status = true;
+            }
+        } else {
+            Cart::update($rowId, $qty);
+            $message = "Cart Updated Successfully";
+            $status = true;
+        }
+
+        session()->flash('success', $message);
+        return response()->json([
+            'status' => $status,
+            'message' => $message
+        ]);
+    }
+
+    public function clearCart(Request $request)
+    {
+        Cart::destroy();
+
+        $message = "Cart Cleared Successfully";
+        session()->flash('success', $message);
+        return response()->json([
+            'status' => true,
+            'message' => $message
+        ]);
+    }
 }

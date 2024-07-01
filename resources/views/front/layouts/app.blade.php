@@ -219,25 +219,28 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-            function addToCart(id) {
-                $.ajax({
-                    url: '{{ route('front.addToCart') }}',
-                    type: 'post',
-                    data: {
-                        id: id,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.status === true) {
-                            window.location.href = '{{ route('front.cart') }}';
-                        } else {
-                            alert(response.message);
-                        }
-                    }
-                });
-            }
+
         });
+    </script>
+    <script>
+        function addToCart(id) {
+            $.ajax({
+                url: '{{ route('front.addToCart') }}',
+                type: 'post',
+                data: {
+                    id: id,
+                    _token: '{{ csrf_token() }}'
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === true) {
+                        window.location.href = '{{ route('front.cart') }}';
+                    } else {
+                        alert(response.message);
+                    }
+                }
+            });
+        }
     </script>
 
 
