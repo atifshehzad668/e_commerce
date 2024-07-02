@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
@@ -114,13 +115,14 @@ class CartController extends Controller
 
             if ($product->qty < $qty) {
                 $status = true;
-                $message = 'Requested qty(' . $qty . ') not available in stock';
+                session()->flash('error', $message = 'Requested qty(' . $qty . ') not available in stock');
             } else {
 
                 $status = false;
                 Cart::update($rowId, $qty);
                 $message = "Cart Updated Successfully";
                 $status = true;
+                session()->flash('success', $message);
             }
         } else {
             Cart::update($rowId, $qty);
@@ -145,5 +147,40 @@ class CartController extends Controller
             'status' => true,
             'message' => $message
         ]);
+    }
+    public function deleteItem(Request $request)
+    {
+
+        $iteminfo = Cart::get($request->rowId);
+        if ($iteminfo == null) {
+            session()->flash('error', 'Item Not Found in Cart');
+            return response()->json([
+                'status' => false,
+                'message' => 'Item Not Found'
+            ]);
+        }
+        Cart::remove($request->rowId);
+        session()->flash('success', 'Item Remove  Successfully');
+        return response()->json([
+            'status' => true,
+            'message' => 'Item Remove  Successfully'
+        ]);
+    }
+
+    public function checkout()
+    {
+        if (Cart::count() == 0) {
+            return redirect()->route('front.cart');
+        }
+
+        if (Auth::check() == false) {
+            if (!session()->has('url.intended')) {
+
+                session(['url.intended' => url()->current()]);
+            }
+            return redirect()->route('account.login');
+        }
+        session()->forget('url.intended');
+        return view('front.checkout');
     }
 }

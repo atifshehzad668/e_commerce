@@ -17,6 +17,10 @@ use App\Http\Controllers\admin\TempImagesController;
 use App\Http\Controllers\admin\SubCategoryController;
 use App\Http\Controllers\admin\ProductImageController;
 use App\Http\Controllers\admin\ProductSubCategoryController;
+use App\Http\Controllers\AuthController;
+
+
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -30,10 +34,28 @@ Route::get('/product/{slug}', [ShopController::class, 'product'])->name('front.p
 Route::get('/cart', [CartController::class, 'Cart'])->name('front.cart');
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('front.addToCart');
 Route::post('/update-to-cart', [CartController::class, 'updateCart'])->name('front.updateCart');
+Route::post('/delete-cart', [CartController::class, 'deleteItem'])->name('front.deleteItem.cart');
 // In routes/web.php or routes/api.php
 Route::post('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+Route::get('/checkout', [CartController::class, 'checkout'])->name('front.checkout');
 
 
+// user register route
+
+
+Route::group(['prefix' => 'account'], function () {
+    Route::group(['middleware' => 'guest'], function () {
+        Route::get('/user-login', [AuthController::class, 'login'])->name('account.login');
+        Route::post('/user-login', [AuthController::class, 'authenticate'])->name('account.authenticate');
+        Route::get('/register/user', [AuthController::class, 'register_user'])->name('account.register');
+        Route::post('/process-register', [AuthController::class, 'processRegister'])->name('account.process.register');
+    });
+
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/user-profile', [AuthController::class, 'profile'])->name('account.profile');
+        Route::get('/user-logout', [AuthController::class, 'logout'])->name('account.logout');
+    });
+});
 
 
 Route::get('/dashboard', function () {
