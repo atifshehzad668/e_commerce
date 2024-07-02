@@ -38,6 +38,8 @@ Route::post('/delete-cart', [CartController::class, 'deleteItem'])->name('front.
 // In routes/web.php or routes/api.php
 Route::post('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
 Route::get('/checkout', [CartController::class, 'checkout'])->name('front.checkout');
+Route::post('/process/checkout', [CartController::class, 'processCheckout'])->name('front.processCheckout');
+Route::get('/thanks/{orderId}', [CartController::class, 'thanks'])->name('front.thanks');
 
 
 // user register route
