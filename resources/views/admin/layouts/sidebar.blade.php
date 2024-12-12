@@ -57,7 +57,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a href="orders.html" class="nav-link">
+=======
+                    <a href="{{ route('orders.index') }}" class="nav-link">
+>>>>>>> origin/master
                         <i class="nav-icon fas fa-shopping-bag"></i>
                         <p>Orders</p>
                     </a>

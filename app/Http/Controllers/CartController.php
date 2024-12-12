@@ -9,6 +9,10 @@ use App\Models\OrderItem;
 
 use Illuminate\Http\Request;
 use App\Models\CustomerAddress;
+<<<<<<< HEAD
+=======
+use Exception;
+>>>>>>> origin/master
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
@@ -247,6 +251,11 @@ class CartController extends Controller
             $order->shipping = $shipping;
             $order->grand_total = $grandTotal;
             $order->user_id = $user->id;
+<<<<<<< HEAD
+=======
+            $order->payment_status = 'not paid';
+            $order->status = 'pending';
+>>>>>>> origin/master
 
             $order->first_name = $request->first_name;
             $order->last_name = $request->last_name;
@@ -273,6 +282,11 @@ class CartController extends Controller
                 $orderItem->save();
             }
 
+<<<<<<< HEAD
+=======
+            orderEmail($order->id,'customer');
+
+>>>>>>> origin/master
             session()->flash('success', 'You have successfully placed your order');
             Cart::destroy();
             return response()->json([
@@ -280,6 +294,10 @@ class CartController extends Controller
                 'orderId' => $order->id,
                 'status' => true
             ]);
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
         } else {
         }
     }
@@ -289,4 +307,8 @@ class CartController extends Controller
     {
         return view('front.thanks', ['id' => $id]);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/master

@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "bcfbc3c5a1c036abb4cff32b2e8b421e",
+=======
+    "content-hash": "cc028e3c6e84c3353bbaac897c3bc150",
+>>>>>>> origin/master
     "packages": [
         {
             "name": "brick/math",
@@ -3658,6 +3662,7 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
+<<<<<<< HEAD
             "version": "11.7.2",
             "source": {
                 "type": "git",
@@ -3668,6 +3673,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/2e08d90043df40a9c7b274bbd677997c54826b86",
                 "reference": "2e08d90043df40a9c7b274bbd677997c54826b86",
+=======
+            "version": "11.10.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-medialibrary.git",
+                "reference": "33c8406b9274af743f78057ae72065ef40a72073"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/33c8406b9274af743f78057ae72065ef40a72073",
+                "reference": "33c8406b9274af743f78057ae72065ef40a72073",
+>>>>>>> origin/master
                 "shasum": ""
             },
             "require": {
@@ -3751,7 +3768,11 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-medialibrary/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/spatie/laravel-medialibrary/tree/11.7.2"
+=======
+                "source": "https://github.com/spatie/laravel-medialibrary/tree/11.10.1"
+>>>>>>> origin/master
             },
             "funding": [
                 {
@@ -3763,7 +3784,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-06-21T08:18:41+00:00"
+=======
+            "time": "2024-11-21T15:57:39+00:00"
+>>>>>>> origin/master
         },
         {
             "name": "spatie/laravel-package-tools",
@@ -8599,12 +8624,20 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
+<<<<<<< HEAD
     "stability-flags": [],
+=======
+    "stability-flags": {},
+>>>>>>> origin/master
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
+<<<<<<< HEAD
     "platform-dev": [],
+=======
+    "platform-dev": {},
+>>>>>>> origin/master
     "plugin-api-version": "2.6.0"
 }

@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class OrderItem extends Model
 {
     use HasFactory;
+<<<<<<< HEAD
+=======
+    /**
+     * Get all of the products for the OrderItem
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
+>>>>>>> origin/master
 }

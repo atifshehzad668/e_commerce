@@ -30,4 +30,18 @@ class Product extends Model implements HasMedia
             ->performOnCollections('images')
             ->nonQueued();
     }
+<<<<<<< HEAD
 }
+=======
+
+    /**
+     * Get the orderitem that owns the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function orderitems()
+    {
+        return $this->hasMany(OrderItem::class, 'product_id', 'id');
+    }
+}
+>>>>>>> origin/master

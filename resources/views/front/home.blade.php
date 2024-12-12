@@ -146,6 +146,58 @@
                 <h2>Featured Products</h2>
             </div>
             <div class="row pb-3">
+<<<<<<< HEAD
+                @if ($products->isNotEmpty())
+=======
+                {{-- @if ($products->isNotEmpty())
+>>>>>>> origin/master
+                    @foreach ($products as $product)
+                        <div class="col-md-3">
+                            <div class="card product-card">
+                                <div class="product-image position-relative">
+                                    <a href="{{ route('front.product', $product->slug) }}" class="product-img">
+<<<<<<< HEAD
+=======
+                                        @dd($product->getMedia('images'));
+>>>>>>> origin/master
+                                        @if ($product->getMedia('images')->isNotEmpty())
+                                            <img style="height: 200px; width: 100%"
+                                                src="{{ $product->getFirstMediaUrl('images') }}"
+                                                alt="{{ $product->name }}">
+                                        @else
+                                            <img src="{{ asset('images/default-product-image.jpg') }}"
+                                                alt="Default Image">
+                                        @endif
+                                    </a>
+                                    <a class="wishlist" href="#"><i class="far fa-heart"></i></a>
+
+                                    <div class="product-action">
+                                        <a class="btn btn-dark" href="javascript:void();"
+                                            onclick="addToCart({{ $product->id }})">
+                                            <i class="fa fa-shopping-cart"></i> Add To Cart
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-body text-center mt-3">
+                                    <a class="h6 link"
+                                        href="{{ route('front.product', $product->slug) }}">{{ $product->name }}</a>
+                                    <div class="price mt-2">
+                                        <span class="h5"><strong>{{ $product->price }}</strong></span>
+                                        @if ($product->compare_price > 0)
+                                            <span
+                                                class="h6 text-underline"><del>{{ $product->compare_price }}</del></span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+<<<<<<< HEAD
+                @endif
+
+
+=======
+                @endif --}}
                 @if ($products->isNotEmpty())
                     @foreach ($products as $product)
                         <div class="col-md-3">
@@ -153,6 +205,7 @@
                                 <div class="product-image position-relative">
                                     <a href="{{ route('front.product', $product->slug) }}" class="product-img">
                                         @if ($product->getMedia('images')->isNotEmpty())
+                                            {{-- Get the first media item and display the image URL --}}
                                             <img style="height: 200px; width: 100%"
                                                 src="{{ $product->getFirstMediaUrl('images') }}"
                                                 alt="{{ $product->name }}">
@@ -187,6 +240,8 @@
                 @endif
 
 
+
+>>>>>>> origin/master
             </div>
         </div>
     </section>

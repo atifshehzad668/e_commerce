@@ -105,10 +105,17 @@
                                     <div>Subtotal</div>
                                     <div>${{ Cart::subtotal() }}</div>
                                 </div>
+<<<<<<< HEAD
                                 <div class="d-flex justify-content-between pb-2">
                                     <div>Shipping</div>
                                     <div>$</div>
                                 </div>
+=======
+                                {{-- <div class="d-flex justify-content-between pb-2">
+                                    <div>Shipping</div>
+                                    <div>$</div>
+                                </div> --}}
+>>>>>>> origin/master
                                 <div class="d-flex justify-content-between summery-end">
                                     <div>Total</div>
                                     <div>${{ Cart::subtotal() }}</div>

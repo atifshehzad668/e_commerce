@@ -13,6 +13,10 @@ use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\CategoryController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\admin\OrderController;
+>>>>>>> origin/master
 use App\Http\Controllers\admin\TempImagesController;
 use App\Http\Controllers\admin\SubCategoryController;
 use App\Http\Controllers\admin\ProductImageController;
@@ -22,10 +26,13 @@ use App\Http\Controllers\AuthController;
 
 
 
+<<<<<<< HEAD
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
+=======
+>>>>>>> origin/master
 
 Route::get('/', [FrontController::class, 'index'])->name('front.home');
 Route::get('/shop/{categorySlug?}/{subCategorySlug?}', [ShopController::class, 'index'])->name('front.shop');
@@ -55,6 +62,11 @@ Route::group(['prefix' => 'account'], function () {
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/user-profile', [AuthController::class, 'profile'])->name('account.profile');
+<<<<<<< HEAD
+=======
+        Route::get('/my-orders', [AuthController::class, 'orders'])->name('account.orders');
+        Route::get('/order-detail/{orderId}', [AuthController::class, 'orderDetail'])->name('account.orderDetail');
+>>>>>>> origin/master
         Route::get('/user-logout', [AuthController::class, 'logout'])->name('account.logout');
     });
 });
@@ -105,8 +117,16 @@ Route::prefix('admin')->group(function () {
 
 
 
+<<<<<<< HEAD
         // shop routes
 
+=======
+        // order detail routes
+        Route::get('/orders',[OrderController::class,'index'])->name('orders.index');
+        Route::get('/orders/{id}',[OrderController::class,'detail'])->name('orders.detail');
+        Route::post('/orders/change-status/{id}',[OrderController::class,'changeOrderStatus'])->name('orders.changeOrderStatus');
+        Route::post('/orders/send-email/{id}',[OrderController::class,'sendInvoiceEmail'])->name('orders.sendInvoiceEmail');
+>>>>>>> origin/master
 
 
 

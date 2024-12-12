@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
+=======
+use App\Models\Order;
+use App\Models\OrderItem;
+>>>>>>> origin/master
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -80,4 +85,22 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()->route('account.login')->with('success', 'You Successfully Logged Out!');
     }
+<<<<<<< HEAD
 }
+=======
+    public function orders()
+    {
+        $user = Auth::user();
+        $orders = Order::where('user_id',$user->id)->orderBy('created_at','DESC')->get();
+        return view('front.userauth.order',get_defined_vars());
+    }
+    public function orderDetail($id)
+    {
+        $user = Auth::user();
+        $order = Order::where('user_id',$user->id)->where('id',$id)->first();
+        $orderItems = OrderItem::where('order_id',$id)->with('products')->get();
+        $orderItemsCount = OrderItem::where('order_id',$id)->with('products')->count();
+        return view('front.userauth.order-detail',get_defined_vars());
+    }
+}
+>>>>>>> origin/master
