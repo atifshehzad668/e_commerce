@@ -9,21 +9,24 @@ class FrontController extends Controller
 {
     public function index()
     {
-<<<<<<< HEAD
-        $products = Product::where('is_featured', 'YES')->where('status', 1)->get();
-        $latest_products = Product::orderBy('id', 'DESC')->where('status', 1)->take(8)->get();
-        return view('front.home', get_defined_vars());
-    }
-}
-=======
-        $products = Product::where('is_featured', 'YES')->with('product_images')->where('status', 1)->get();
+        // Fetch featured products
+        $products = Product::where('is_featured', 'YES')
+            ->where('status', 1)
+            ->with('product_images')  // Assuming you have a relationship defined for product_images
+            ->get();
 
-        $latest_products = Product::orderBy('id', 'DESC')->where('status', 1)->take(8)->get();
-        return view('front.home', get_defined_vars());
+        // Fetch the latest products
+        $latest_products = Product::orderBy('id', 'DESC')
+            ->where('status', 1)
+            ->take(8)
+            ->get();
+
+        // Pass the data to the view
+        return view('front.home', compact('products', 'latest_products'));
     }
+
     public function addToWishlist(Request $request)
     {
-
+        // Add logic for adding a product to the wishlist
     }
 }
->>>>>>> origin/master

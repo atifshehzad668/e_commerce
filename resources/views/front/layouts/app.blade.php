@@ -250,8 +250,8 @@
                 }
             });
         }
-<<<<<<< HEAD
-=======
+
+
         function addToWishlist(id) {
             $.ajax({
                 url: '{{ route('front.addToCart') }}',
@@ -270,7 +270,7 @@
                 }
             });
         }
->>>>>>> origin/master
+
     </script>
 
 
